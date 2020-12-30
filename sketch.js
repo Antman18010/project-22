@@ -25,8 +25,8 @@ function setup() {
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6
 
-	//groundSprite=createSprite(width/2, height-35, width,10);
-	//groundSprite.shapeColor=color(255)
+	groundSprite=createSprite(width/2, height-35, width,10);
+	groundSprite.shapeColor=color(255)
 
 
 	engine = Engine.create();
@@ -36,6 +36,9 @@ function setup() {
 
 	packageBody = Bodies.circle(width/2 , 200 , 20 , {restitution:0.2, isStatic:true});
 	World.add(world, packageBody);
+
+	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+ 	World.add(world, ground);
 
 	Engine.run(engine);
 
@@ -47,14 +50,16 @@ function draw() {
 	Engine.update(engine);
 
 	background(0);
-	packageSprite.x= packageBody.position.x 
-	packageSprite.y= packageBody.position.y 
+	packageSprite.x= packageBody.position.x ;
+	packageSprite.y= packageBody.position.y;
+
 	drawSprites();
-  
-	  
+  	  
 	if(keyDown(DOWN_ARROW)) {
 	  Matter.Body.setStatic(packageBody,false);
 
+	 package = restitution = 1.0
+	  
 
 	  }	
 	}
